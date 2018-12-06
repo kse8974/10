@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
  
- typedef struct linknd{
+typedef struct linknd{
 	int data;
 	
-	void*next;
+	void *next;
 	// struct linknd *next;
 } linknd_t;
 
@@ -13,7 +13,7 @@
  static linknd_t *list; 			//linked list 실체 , 나만 건들수 있다!!!
  
  
- linknd_t* create_node(int value){
+linknd_t* create_node(int value){
  	linknd_t* ndPtr;
  	
  	// 동적 메모리 할당(구조체 바이트 수만큼)
@@ -34,6 +34,45 @@
  } 
 
 
+void addTail(int value)
+{
+	linknd_t *ndPtr, *newPtr;
+		
+	if(list == NULL)
+	{
+		return;
+	}
+	else
+	{
+		ndPtr = list;
+		while (ndPtr->next != NULL){
+			ndPtr = ndPtr->next;
+		}
+		
+		newPtr = create_node(value);
+		ndPtr->next = newPtr;
+	}
+}
+
+void genList(void){
+	
+	list = create_node(0);
+	
+	return;
+	
+}
+
+void print_list(void){
+	
+	linknd_t *ndPtr ;
+		
+	ndPtr = (linknd_t*)list->next;
+	
+	while(ndPtr != NULL){
+		printf("%i", ndPtr->data);
+		ndPtr = ndPtr->next;
+	}	
+}
 
 
 
